@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Week Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .progress-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 25px;
+            background: #4CAF50;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        .text {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Academic Week Progress</h2>
+    <div class="progress-container">
+        <div class="progress-bar" id="progress"></div>
+    </div>
+    <p class="text" id="week-text"></p>
+
+    <script>
+        // Set your academic semester start and end dates here
+        const startDate = new Date("2025-02-01"); // Change to your semester start date
+        const endDate = new Date("2025-06-01"); // Change to your semester end date
+        const today = new Date();
+
+        // Calculate progress
+        const totalWeeks = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24 * 7));
+        const currentWeek = Math.ceil((today - startDate) / (1000 * 60 * 60 * 24 * 7));
+
+        const progressPercentage = (currentWeek / totalWeeks) * 100;
+
+        // Update progress bar and text
+        document.getElementById("progress").style.width = progressPercentage + "%";
+        document.getElementById("week-text").textContent = `Week ${currentWeek} of ${totalWeeks} (${Math.max(0, totalWeeks - currentWeek)} weeks left)`;
+    </script>
+</body>
+</html>
