@@ -10,11 +10,12 @@
         body {
             font-family: 'Garamond', serif; /* Updated to use Google Font Garamond */
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             background-color: #6E8175; /* sage green background */
         }
         h2 {
             color: #f4f4f4; /*beige text*/
+            font-size: 20px;
         }
         .progress-container {
             width: 100%;
@@ -59,7 +60,10 @@
 
         // Update progress bar and text
         document.getElementById("progress").style.width = progressPercentage + "%";
-        document.getElementById("week-text").textContent = `week ${currentWeek} of ${totalWeeks} (${Math.max(0, totalWeeks - currentWeek)} weeks left)`;
+        document.getElementById("week-text").innerHTML = `
+            <p>week ${currentWeek} of ${totalWeeks}</p>
+            <p><em>${Math.max(0, totalWeeks - currentWeek)} weeks left</em></p>
+        `;
     </script>
 </body>
 </html>
